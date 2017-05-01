@@ -53,7 +53,7 @@ gulp.task('sprites', () => {
       cssTemplate: 'src/stylus.template.mustache'
     }));
     spriteData.img.pipe(gulp.dest('src/img/'));
-    spriteData.css.pipe(gulp.dest('src/styl/'));
+    spriteData.css.pipe(gulp.dest('src/styl/settings'));
 });
 
 /************JS***********/
