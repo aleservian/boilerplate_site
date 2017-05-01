@@ -1,14 +1,13 @@
 const gulp = require('gulp'),
       concat = require('gulp-concat'),
       connect = require('gulp-connect'),
-      csso = require('gulp-csso'),
+      minifyCSS = require('gulp-csso'),
       pug = require('gulp-pug'),
       stylus = require('gulp-stylus'),
       uglify = require('gulp-uglify'),
       spritesmith = require('gulp.spritesmith'),
       koutoSwiss  = require('kouto-swiss'),
       plumber = require('gulp-plumber');
-
 
 /*******CONNECT***********/
 gulp.task('connectDist', () => {
@@ -31,6 +30,18 @@ gulp.task('views', () => {
     .pipe(gulp.dest('dist/'))
 });
 
+/********CSS**********/
+gulp.task('css', () => {
+    gulp.src('src/styl/main.styl')
+    .pipe(plumber())
+    .pipe(stylus({
+        use:[koutoSwiss()]
+    }))
+    .pipe(minifyCSS())
+    .pipe(connect.reload())
+    .pipe(gulp.dest('dist/css'))
+});
+
 /*******SPRITES***********/
 gulp.task('sprites', () => {
   const spriteData = gulp.src('src/sprites/*.png')
@@ -43,6 +54,15 @@ gulp.task('sprites', () => {
     }));
     spriteData.img.pipe(gulp.dest('src/img/'));
     spriteData.css.pipe(gulp.dest('src/styl/'));
+});
+
+/************JS***********/
+gulp.task('js', () => {
+  gulp.src(['src/js/**/*.js','!src/js/basket.min.js'])
+    .pipe(plumber())
+    .pipe(concat('main.js'))
+    .pipe(uglify())
+    .pipe(gulp.dest('dist/js'))
 });
 
 /***********COPY IMAGES***************/
@@ -61,10 +81,12 @@ gulp.task('fonts:copy', () => {
 /*******WATCH***********/
 gulp.task('watch',() => {
   gulp.watch('src/views/**/*.pug', ['views']);
+  gulp.watch('src/styl/**/*.styl', ['css']);
   gulp.watch('src/sprites/*.png', ['sprites']);
+  gulp.watch('src/js/**/*.js', ['js']);
   gulp.watch('src/img/**/*.{jpg,png,gif}', ['image:copy']);
   gulp.watch('src/fonts/**/*', ['fonts:copy']);
 });
 
 /*******DEFAULT***********/
-gulp.task('default', ['connectDist','views','sprites','image:copy','fonts:copy','watch']);
+gulp.task('default', ['connectDist','views','css','sprites','js','image:copy','fonts:copy','watch']);
