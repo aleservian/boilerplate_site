@@ -1,0 +1,36 @@
+{
+  "name": "boilerplate_site",
+  "version": "1.0.0",
+  "description": "Padrão para a criação de sites usando stylus e pug",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aleservian/boilerplate_site.git"
+  },
+  "keywords": [
+    "stylus",
+    "javascript",
+    "pug",
+    "boilerplate"
+  ],
+  "author": "Alexandre Servian <alexandreservian@gmail.com>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/aleservian/boilerplate_site/issues"
+  },
+  "homepage": "https://github.com/aleservian/boilerplate_site#readme",
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-connect": "^5.0.0",
+    "gulp-csso": "^3.0.0",
+    "gulp-pug": "^3.3.0",
+    "gulp-stylus": "^2.6.0",
+    "gulp-uglify": "^2.1.2",
+    "gulp.spritesmith": "^6.4.0",
+    "kouto-swiss": "^1.1.0"
+  }
+}
