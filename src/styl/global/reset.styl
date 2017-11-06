@@ -12,7 +12,7 @@ header,nav,footer,section,article,aside
  display block
 img
  border none
-p,span,label,td,li,dt,dd
+p,a,span,label,td,li,dt,dd
  color color-pattern-black
  font 1em/1.2em font-one
 html,body
@@ -23,6 +23,8 @@ body
  font-family font-one
  font-size 14px
  width 100%
+strong
+  font-family font-two
 //Headings
 h1,h2,h3,h4,h5,h6
  color color-pattern-black
@@ -84,10 +86,8 @@ thead
    font 1em/1.2em font-one
    padding 19px 12px
    text-align left
-   transition(0.2s)
 tbody td,tfoot td
  padding 4px
- transition(0.2s)
 tfoot td
  font bold 13px/18px font-one
 //FORM
@@ -110,9 +110,10 @@ select,textarea,input[type=text],input[type=password],input[type=datetime],input
  color color-pattern-black
 :-ms-input-placeholder
  color color-pattern-black
- label
-  cursor pointer 
-  margin 0     
+label
+ color color-pattern-black
+ display block
+ margin 0     
 input[type=checkbox],input[type=radio]
  cursor pointer
  display block
@@ -125,13 +126,10 @@ fieldset
  border-radius(5px)
  padding 10px
 legend
- color #58585a
-label
  color color-pattern-black
- display block
 select
  height 30px
- line-height: 1em
+ line-height 1em
  padding 3px 0
  width 100%
 select[multiple]

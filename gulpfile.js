@@ -62,6 +62,7 @@ gulp.task('js', () => {
     .pipe(plumber())
     .pipe(concat('main.js'))
     .pipe(uglify())
+    .pipe(connect.reload())
     .pipe(gulp.dest('dist/js'))
 });
 
@@ -84,8 +85,8 @@ gulp.task('watch',() => {
   gulp.watch('src/styl/**/*.styl', ['css']);
   gulp.watch('src/sprites/*.png', ['sprites']);
   gulp.watch('src/js/**/*.js', ['js']);
-  gulp.watch('src/img/**/*.{jpg,png,gif}', ['image:copy']);
-  gulp.watch('src/fonts/**/*', ['fonts:copy']);
+  gulp.watch('src/img/**/*.{jpg,png,gif,svg}', ['image:copy']);
+  gulp.watch('src/fonts/**/*.{ttf,eot}', ['fonts:copy']);
 });
 
 /*******DEFAULT***********/

@@ -1,6 +1,6 @@
 {
   "name": "boilerplate_site",
-  "version": "1.0.0",
+  "version": "1.3.2",
   "description": "Padrão para a criação de sites usando stylus e pug",
   "main": "index.js",
   "scripts": {
